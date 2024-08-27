@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Gopal App</a>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!checkAuthenticated()">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="checkAuthenticated()">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Gopal</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Komati</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<h1 *ngIf="userEmail != null && checkAuthenticated()">username = {{userEmail}}</h1>
